@@ -11,7 +11,7 @@ Create ```my.cnf``` config file:
 
 Generate password and save it to file:
 
-    openssl rand -hex 8 > /var/data/mysql/5.7.10/ROOTPASSWORD
+    echo "$(openssl rand -hex 64 | sha256sum | base64 | head -c 16 ; echo)" | awk '{print tolower($0)}' > /var/data/mysql/5.7.10/ROOTPASSWORD
     chmod 600 /var/data/mysql/5.7.10/ROOTPASSWORD
 
 Run container:
