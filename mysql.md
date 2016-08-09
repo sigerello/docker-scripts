@@ -39,7 +39,7 @@ Change root password to previously generated one:
 
     mysql> ALTER USER root IDENTIFIED BY 'ROOTPASSWORD';
 
-Check proper encoding configuration:
+Check proper encoding configuration (should be UTF8):
 
     mysql> SHOW VARIABLES LIKE "%character%"; SHOW VARIABLES LIKE "%collation%";
 
@@ -48,6 +48,6 @@ Create user for each project (substitute ```proj``` with your actual project/use
     mysql> CREATE DATABASE `proj` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
     mysql> GRANT ALL PRIVILEGES ON `proj`.* TO `proj>`@`%` IDENTIFIED BY 'NEWPASSWORD';
 
-Check proper encoding configuration:
+Check users:
 
     mysql> SELECT Host, User FROM mysql.user;
