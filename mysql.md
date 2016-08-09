@@ -11,8 +11,7 @@ Create ```my.cnf``` config file:
 
 Generate password and save it to file:
 
-    rails-console> SecureRandom.hex(8)
-    touch /var/data/mysql/5.7.10/ROOTPASSWORD
+    openssl rand -hex 8 > /var/data/mysql/5.7.10/ROOTPASSWORD
     chmod 600 /var/data/mysql/5.7.10/ROOTPASSWORD
 
 Run container:
@@ -32,7 +31,7 @@ Run container:
 
 (Watch ```docker logs mysql``` to see generated password)
 
-Acces to mysql console:
+Access to mysql console:
 
     docker exec -it mysql mysql -u root -p
 
