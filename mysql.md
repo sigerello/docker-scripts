@@ -35,7 +35,7 @@ Access to mysql console:
 
     docker exec -it mysql mysql -u root -p
 
-Generate new password and set it to root user:
+Change root password to previously generated one:
 
     mysql> ALTER USER root IDENTIFIED BY 'ROOTPASSWORD';
 
@@ -43,7 +43,7 @@ Check proper encoding configuration:
 
     mysql> SHOW VARIABLES LIKE "%character%"; SHOW VARIABLES LIKE "%collation%";
 
-Create user for each project:
+Create user for each project (substitute ```proj``` with your actual project/user name):
 
     mysql> CREATE DATABASE `proj` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
     mysql> GRANT ALL PRIVILEGES ON `proj`.* TO `proj>`@`%` IDENTIFIED BY 'NEWPASSWORD';
@@ -51,8 +51,3 @@ Create user for each project:
 Check proper encoding configuration:
 
     mysql> SELECT Host, User FROM mysql.user;
-
-Remove container and data:
-
-    $ docker stop mysql && docker rm mysql
-    $ rm -rf /var/data/mysql/5.7.10/data/*
