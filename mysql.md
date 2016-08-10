@@ -43,7 +43,7 @@ Check proper encoding configuration (should be UTF8):
 
     mysql> SHOW VARIABLES LIKE "%character%"; SHOW VARIABLES LIKE "%collation%";
 
-Create user for each project (substitute ```proj``` with your actual project/user name):
+Create user and database for each project (substitute ```proj``` with your actual project/user name):
 
     mysql> CREATE DATABASE `proj` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
     mysql> GRANT ALL PRIVILEGES ON `proj`.* TO `proj>`@`%` IDENTIFIED BY 'NEWPASSWORD';
@@ -51,3 +51,8 @@ Create user for each project (substitute ```proj``` with your actual project/use
 Check users:
 
     mysql> SELECT Host, User FROM mysql.user;
+
+
+Restart container:
+
+    docker restart mysql
