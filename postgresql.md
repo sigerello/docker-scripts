@@ -35,13 +35,18 @@ Access to psql console:
     postgres> \l+   - list databases
     postgres> \q    - exit
 
+
+Change root user password:
+
+    ALTER USER postgres WITH ENCRYPTED PASSWORD 'rootpassword';
+
 Revoke privileges on system tables from PUBLIC:
 
     postgres> REVOKE ALL ON DATABASE postgres, template0, template1 FROM PUBLIC;
 
 Create user and database for each project (substitute ```proj``` with your actual project/user name):
 
-    postgres> CREATE USER proj WITH ENCRYPTED PASSWORD '4321';
+    postgres> CREATE USER proj WITH ENCRYPTED PASSWORD 'projpassword';
     postgres> CREATE DATABASE proj OWNER proj;
     postgres> REVOKE ALL ON DATABASE proj FROM PUBLIC;
     postgres> GRANT ALL ON DATABASE proj TO proj;
