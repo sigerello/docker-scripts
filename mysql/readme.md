@@ -52,7 +52,14 @@ Check users:
 
     mysql> SELECT Host, User FROM mysql.user;
 
+Watch docker container logs:
+
+    docker logs -f --tail=500 mysql
 
 Restart container:
 
     docker restart mysql
+
+Stop and remove container:
+
+    docker stop mysql && docker rm mysql

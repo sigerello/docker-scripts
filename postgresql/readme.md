@@ -38,7 +38,7 @@ Access to psql console:
 
 Change root user password:
 
-    ALTER USER postgres WITH ENCRYPTED PASSWORD 'rootpassword';
+    postgres> ALTER USER postgres WITH ENCRYPTED PASSWORD 'rootpassword';
 
 Revoke privileges on system tables from PUBLIC:
 
@@ -77,6 +77,14 @@ Change host-based authentication settings:
     host all all ::1/128 md5
     host all all 0.0.0.0/0 md5
 
+Watch docker container logs:
+
+    docker logs -f --tail=500 postgresql
+
 Restart container:
 
     docker restart postgresql
+
+Stop and remove container:
+
+    docker stop postgresql && docker rm postgresql

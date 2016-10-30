@@ -2,8 +2,8 @@
 
 Create data volumes:
 
-    mkdir /var/data/redis/3.0.7/data
-    mkdir /var/data/redis/3.0.7/config
+    mkdir -p /var/data/redis/3.0.7/data
+    mkdir -p /var/data/redis/3.0.7/config
 
 Change some system params:
 
@@ -40,3 +40,11 @@ Run container:
 Watch docker container logs:
 
     docker logs -f --tail=500 redis
+
+Restart container:
+
+    docker restart redis
+
+Stop and remove container:
+
+    docker stop redis && docker rm redis
