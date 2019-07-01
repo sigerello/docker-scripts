@@ -46,7 +46,7 @@ Check proper encoding configuration (should be UTF8):
 Create user and database for each project (substitute ```proj``` with your actual project/user name):
 
     mysql> CREATE DATABASE `proj` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-    mysql> GRANT ALL PRIVILEGES ON `proj`.* TO `proj>`@`%` IDENTIFIED BY 'newpassword';
+    mysql> GRANT ALL PRIVILEGES ON `proj`.* TO `proj`@`%` IDENTIFIED BY 'newpassword';
 
 Check users:
 
