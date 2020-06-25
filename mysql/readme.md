@@ -39,6 +39,10 @@ Change root password to previously generated one:
 
     mysql> ALTER USER root IDENTIFIED BY 'rootpassword';
 
+Set password to never expire:
+    
+    mysql> ALTER USER root PASSWORD EXPIRE NEVER;
+
 Check proper encoding configuration (should be UTF8):
 
     mysql> SHOW VARIABLES LIKE "%character%"; SHOW VARIABLES LIKE "%collation%";
