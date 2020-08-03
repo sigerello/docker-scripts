@@ -2,10 +2,10 @@
 
 Create data volumes:
 
-    mkdir -p /var/data/redis/4.0.8/data
-    mkdir -p /var/data/redis/4.0.8/config
+    mkdir -p /var/data/redis/6.0.6/data
+    mkdir -p /var/data/redis/6.0.6/config
     
-Copy example config from here [http://download.redis.io/redis-stable/redis.conf](http://download.redis.io/redis-stable/redis.conf) and save it to `/var/data/redis/4.0.8/config/redis.conf`
+Copy example config from here [http://download.redis.io/redis-stable/redis.conf](http://download.redis.io/redis-stable/redis.conf) and save it to `/var/data/redis/6.0.6/config/redis.conf`
 
 Change `bind` param in config to make redis listen on private network interface (change IP to your current private IP):
 
@@ -36,8 +36,8 @@ Run container:
       -p 6379:6379 \
       --restart always \
       --net host \
-      -v /var/data/redis/4.0.8/data:/data \
-      -v /var/data/redis/4.0.8/config:/usr/local/etc/redis \
+      -v /var/data/redis/6.0.6/data:/data \
+      -v /var/data/redis/6.0.6/config:/usr/local/etc/redis \
       -v /etc/localtime:/etc/localtime:ro \
       -v /etc/timezone:/etc/timezone:ro \
       redis:alpine \
