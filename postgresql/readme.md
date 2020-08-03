@@ -2,15 +2,15 @@
 
 Create data volumes:
 
-    mkdir -p /var/data/postgresql/9.5.3/data
+    mkdir -p /var/data/postgresql/9.5.22/data
 
 Generate password and save it to files:
 
-    echo "$(openssl rand -hex 64 | sha256sum | base64 | head -c 16 ; echo)" | awk '{print tolower($0)}' > /var/data/postgresql/9.5.3/ROOTPASSWORD
-    chmod 600 /var/data/postgresql/9.5.3/ROOTPASSWORD
+    echo "$(openssl rand -hex 64 | sha256sum | base64 | head -c 16 ; echo)" | awk '{print tolower($0)}' > /var/data/postgresql/9.5.22/ROOTPASSWORD
+    chmod 600 /var/data/postgresql/9.5.22/ROOTPASSWORD
 
-    echo "$(openssl rand -hex 64 | sha256sum | base64 | head -c 16 ; echo)" | awk '{print tolower($0)}' > /var/data/postgresql/9.5.3/PROJPASSWORD
-    chmod 600 /var/data/postgresql/9.5.3/PROJPASSWORD
+    echo "$(openssl rand -hex 64 | sha256sum | base64 | head -c 16 ; echo)" | awk '{print tolower($0)}' > /var/data/postgresql/9.5.22/PROJPASSWORD
+    chmod 600 /var/data/postgresql/9.5.22/PROJPASSWORD
 
 Run container:
 
@@ -19,10 +19,10 @@ Run container:
       -d \
       -p 5432:5432 \
       --restart always \
-      -v /var/data/postgresql/9.5.3/data:/var/lib/postgresql/data \
+      -v /var/data/postgresql/9.5.22/data:/var/lib/postgresql/data \
       -v /etc/localtime:/etc/localtime:ro \
       -v /etc/timezone:/etc/timezone:ro \
-      postgres:9.5.3
+      postgres:9.5.22
 
 (Watch ```docker logs postgresql``` to check DB init process is ok)
 
@@ -62,15 +62,15 @@ Secure connection with SSL:
 
 Change some settings:
 
-    sed -ie "s/max_connections = 100/max_connections = 1000/" /var/data/postgresql/9.5.3/data/postgresql.conf
-    sed -ie "s/#ssl = off/ssl = on/" /var/data/postgresql/9.5.3/data/postgresql.conf
-    sed -ie "s/#ssl_ciphers = .*/ssl_ciphers = 'AES256+EECDH:AES256+EDH'/" /var/data/postgresql/9.5.3/data/postgresql.conf
-    sed -ie "s/#log_line_prefix = ''/log_line_prefix = '%t '/" /var/data/postgresql/9.5.3/data/postgresql.conf
+    sed -ie "s/max_connections = 100/max_connections = 1000/" /var/data/postgresql/9.5.22/data/postgresql.conf
+    sed -ie "s/#ssl = off/ssl = on/" /var/data/postgresql/9.5.22/data/postgresql.conf
+    sed -ie "s/#ssl_ciphers = .*/ssl_ciphers = 'AES256+EECDH:AES256+EDH'/" /var/data/postgresql/9.5.22/data/postgresql.conf
+    sed -ie "s/#log_line_prefix = ''/log_line_prefix = '%t '/" /var/data/postgresql/9.5.22/data/postgresql.conf
 
 
 Change host-based authentication settings:
 
-    nano /var/data/postgresql/9.5.3/data/pg_hba.conf
+    nano /var/data/postgresql/9.5.22/data/pg_hba.conf
 
     local all all md5
     host all all 127.0.0.1/32 md5
