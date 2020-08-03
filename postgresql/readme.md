@@ -22,6 +22,7 @@ Run container:
       -v /var/data/postgresql/9.5.22/data:/var/lib/postgresql/data \
       -v /etc/localtime:/etc/localtime:ro \
       -v /etc/timezone:/etc/timezone:ro \
+      -e POSTGRES_PASSWORD=secret \
       postgres:9.5.22
 
 (Watch ```docker logs postgresql``` to check DB init process is ok)
